@@ -1,7 +1,7 @@
 /*********************************************************************
 Tehtävä: HARJOITUS 15
 Tekijä: Pekka Melgin
-PVM: 8.10.2013
+PVM: 5.11.2013
 Kuvaus:
 TäSSä TEHTÄVÄSSÄ ON KÄYTETTÄVÄ C-kielen primitiivisiä merkkitaulukoita!
 
@@ -30,19 +30,34 @@ using namespace std;
 int main() 
 {
 	// A ja B-kohdat: char mjono2[18] = {0};
-	const int pituus = 101;
-	char mjono2[pituus];
+	//const int pituus = 101;
+	char mjono2[100];
 	// A ja B-kohdat: const int pituus = 18;
-	char mjono[pituus];
-	int ind = 100;
+	char mjono[100];
 	int ind2 = 0;
-	cout << "Anna 17 merkkiä pitkä merkkijono (ei välilyöntejä): ";
+	cout << "Anna max 100 merkkia pitka merkkijono: ";
 	cin.get(mjono,101);
+	int ind = -1;
+	int ok = 0;
+	while (ok == 0) {
+		if (mjono[ind] == NULL) {
+			ok++;
+		}
+		else {
+			ind++;
+		}
+	}
+	ind--;
 	while (ind >= 0) {
-		//cout << mjono[ind];
 		mjono2[ind2] = mjono[ind];
 		ind--;
 		ind2++;
 	}
-	cout << mjono2;
+	mjono2[ind2] = NULL;
+	if (strcmp(mjono,mjono2)==0) {
+		cout << "Kyl on palindromi." <<endl << mjono2 <<endl;
+	}
+	else {
+		cout << "Ei ole palindromi" <<endl << mjono2 <<endl;
+	}
 }
